@@ -49,8 +49,37 @@ int main() {
 				}
 			}
 		}
-		cout << "Row: " << rowCheck << endl;
-		cout << "Column: " << columnCheck << endl;
+
+		if (rowCheck != 404 && columnCheck != 404) {
+			if (seatChart[rowCheck][columnCheck] == 'D') {
+				seatChart[rowCheck][columnCheck] = 'X';
+			}
+			else if (seatChart[rowCheck][columnCheck] == 'C') {
+				seatChart[rowCheck][columnCheck] = 'X';
+			}
+			else if (seatChart[rowCheck][columnCheck] == 'B') {
+				seatChart[rowCheck][columnCheck] = 'X';
+			}
+			else if (seatChart[rowCheck][columnCheck] == 'A') {
+				seatChart[rowCheck][columnCheck] = 'X';
+			}
+			else {
+				availableSeat = false;
+			}
+		}
+		else {
+			availableSeat = false;
+		}
+
+		for (int i = 1; i < 9; i++) {
+			thisRow = i;
+			displaySeatColumn(seatChart, thisRow);
+		}
+
+		if (!availableSeat && !cin.fail()) {
+			cout << endl << "Please chose a valid seat." << endl;
+			availableSeat = true;
+		}
 
 	} while (!cin.fail());
 }
